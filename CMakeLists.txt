@@ -32,15 +32,20 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
 
 
 configure_file(version.h.in version.h) 
+add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/src
+${CMAKE_CURRENT_BINARY_DIR}/src/lib
+                 EXCLUDE_FROM_ALL)
 
 
-add_executable(main src/ip_filter.cpp)
+add_library(ip_lib IP_lib.cpp)
 
-set_target_properties(main PROPERTIES
+add_executable(main ip_filter.cpp)
+
+set_target_properties(main ip_lib PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
-
+target_link_libraries(main ip_lib)
 ##
 
 
