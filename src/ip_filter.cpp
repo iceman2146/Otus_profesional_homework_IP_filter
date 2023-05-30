@@ -23,17 +23,17 @@ int main() {
     }
 
     std::sort(ip_pool.begin(), ip_pool.end(),
-              [](auto a, auto b) { return (a > b); });
+                [](auto a, auto b) { return (a > b); });
     std::cout << ip_pool;
 
     ip_filter(ip_pool, ip_address(1));
-    std::cout << ip_pool;
+    
 
     ip_filter(ip_pool, ip_address(46, 70));
-    std::cout << ip_pool;
+    
 
     ip_filter_any(ip_pool, 46);
-    std::cout << ip_pool;
+    
 
   } catch (const std::exception &e) {
     std::cerr << e.what() << std::endl;
